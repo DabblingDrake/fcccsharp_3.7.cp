@@ -292,28 +292,28 @@ do
             // Console.WriteLine("The following pet profiles are not complete");          
             // int checkAge = 0;
             // string updatePet = "y";
-            var needsUpdate = "";
+            var descriptionUpdate = "";
 
-            Console.WriteLine("\nThe following pet IDs need their and/or physical description updated.\n");
+            Console.WriteLine("\nThe following pet IDs need their age and/or physical description updated.\n");
             for (int i = 0; i < maxPets; i++)
             {
                 // if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 2].Contains("?") || ourAnimals[i, 4] == "Physical description: "))
                 if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 2].Equals("Age: ?") || ourAnimals[i, 4].Equals("Physical description: ") || ourAnimals[i, 4].Equals("Physical description: tbd")))
                 {
-                    needsUpdate = "";
+                    descriptionUpdate = "";
                     if (ourAnimals[i, 2].Contains("?"))
                     {
-                        needsUpdate += "\nAge needs updating!";
+                        descriptionUpdate += "\nAge needs updating!";
                     }
 
                     if (ourAnimals[i, 4] == "Physical description: " || ourAnimals[i, 4].Equals("Physical description: tbd"))
                     {
-                        needsUpdate += "\nPhysical description needs updating!";
+                        descriptionUpdate += "\nPhysical description needs updating!";
                     }
                 }
-                if (ourAnimals[i, 0] != "ID #: " && needsUpdate != "")
+                if (ourAnimals[i, 0] != "ID #: " && descriptionUpdate != "")
                 {
-                    Console.WriteLine($"\n--{ourAnimals[i, 0]}{needsUpdate}");
+                    Console.WriteLine($"\n--{ourAnimals[i, 0]}{descriptionUpdate}");
                 }
             }
 
@@ -363,30 +363,35 @@ do
             readResult = Console.ReadLine();
             break;
 
+// string animalPersonalityDescription = "";
+// string animalNickname = "";
+// ourAnimals[petCount, 3] = "Nickname: " + animalNickname;
+// ourAnimals[petCount, 5] = "Personality: " + animalPersonalityDescription
+
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-var needsUpdate = "";
+        var nameUpdate = "";
 
-            Console.WriteLine("\nThe following pet IDs need their and/or physical description updated.\n");
+            Console.WriteLine("\nThe following pet IDs need their nickname and/or personality description updated.\n");
             for (int i = 0; i < maxPets; i++)
             {
                 // if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 2].Contains("?") || ourAnimals[i, 4] == "Physical description: "))
-                if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 2].Equals("Age: ?") || ourAnimals[i, 4].Equals("Physical description: ") || ourAnimals[i, 4].Equals("Physical description: tbd")))
+                if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 3].Equals("Age: ?") || ourAnimals[i, 5].Equals("Personality: ") || ourAnimals[i, 5].Equals("Personality: tbd")))
                 {
-                    needsUpdate = "";
-                    if (ourAnimals[i, 2].Contains("?"))
+                    nameUpdate = "";
+                    if (ourAnimals[i, 3].Equals("Nickname: ") || ourAnimals[i, 3].Equals("Nickname: tbd"))
                     {
-                        needsUpdate += "\nAge needs updating!";
+                        nameUpdate += "\nNickname needs updating!";
                     }
 
-                    if (ourAnimals[i, 4] == "Physical description: " || ourAnimals[i, 4].Equals("Physical description: tbd"))
+                    if (ourAnimals[i, 5].Equals("Personality: ") || ourAnimals[i, 5].Equals("Personality: tbd"))
                     {
-                        needsUpdate += "\nPhysical description needs updating!";
+                        nameUpdate += "\nPersonality description needs updating!";
                     }
                 }
-                if (ourAnimals[i, 0] != "ID #: " && needsUpdate != "")
+                if (ourAnimals[i, 0] != "ID #: " && nameUpdate != "")
                 {
-                    Console.WriteLine($"\n--{ourAnimals[i, 0]}{needsUpdate}");
+                    Console.WriteLine($"\n--{ourAnimals[i, 0]}{nameUpdate}");
                 }
             }
 
@@ -395,39 +400,51 @@ var needsUpdate = "";
 
             for (int i = 0; i < maxPets; i++)
             {
-                if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 2].Equals("Age: ?") || ourAnimals[i, 4].Equals("Physical description: ") || ourAnimals[i, 4].Equals("Physical description: tbd")))
+                if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 3].Equals("Nickname: ") || ourAnimals[i, 3].Equals("Nickname: tbd") || ourAnimals[i, 5].Equals("Personality: ") || ourAnimals[i, 5].Equals("Personality: tbd")))
                 {
-                    if (ourAnimals[i, 0] != "ID #: " && ourAnimals[i, 2].Equals("Age: ?"))
+                    // if (ourAnimals[i, 0] != "ID #: " && ourAnimals[i, 2].Equals("Age: ?"))
+                    // {
+                    //     do
+                    //     {
+                    //         Console.WriteLine($"\nFor Pet {ourAnimals[i, 0]}, enter an age:");
+                    //         readResult = Console.ReadLine();
+                    //         if (readResult != null)
+                    //         {
+                    //             animalAge = readResult;
+                    //             if (animalAge != "?")
+                    //             {
+                    //                 validEntry = int.TryParse(animalAge, out petAge);
+                    //             }
+                    //             else
+                    //             {
+                    //                 validEntry = true;
+                    //             }
+                    //         }
+                    //     } while (validEntry == false);
+                    // }
+                    if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 3].Equals("Nickname: ") || ourAnimals[i, 3].Equals("Nickname: tbd")))
                     {
                         do
                         {
-                            Console.WriteLine($"\nFor Pet {ourAnimals[i, 0]}, enter an age:");
+                            Console.WriteLine($"\nFor Pet {ourAnimals[i, 0]}, please enter a nickname:");
                             readResult = Console.ReadLine();
                             if (readResult != null)
                             {
-                                animalAge = readResult;
-                                if (animalAge != "?")
-                                {
-                                    validEntry = int.TryParse(animalAge, out petAge);
-                                }
-                                else
-                                {
-                                    validEntry = true;
-                                }
+                                animalNickname = readResult.ToLower();
                             }
-                        } while (validEntry == false);
+                        } while (animalNickname == "");
                     }
-                    if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 4].Equals("Physical description: ") || ourAnimals[i, 4].Equals("Physical description: tbd")))
+                    if (ourAnimals[i, 0] != "ID #: " && (ourAnimals[i, 5].Equals("Personality: ") || ourAnimals[i, 5].Equals("Personality: tbd")))
                     {
                         do
                         {
-                            Console.WriteLine($"\nFor Pet {ourAnimals[i, 0]}, enter a physical description (size, color, gender, weight, housebroken):");
+                            Console.WriteLine($"\nFor Pet {ourAnimals[i, 0]}, enter a personality description (likes, dislikes, tricks, energy level, etc):");
                             readResult = Console.ReadLine();
                             if (readResult != null)
                             {
-                                animalPhysicalDescription = readResult.ToLower();
+                                animalPersonalityDescription = readResult.ToLower();
                             }
-                        } while (animalPhysicalDescription == "");
+                        } while (animalPersonalityDescription == "");
                     }
                 }
             }
